@@ -1,12 +1,14 @@
-const express = require('express');
-const user_route = require('./routes/user.route');
-const bodyParser = require('body-parser');
-const app = express();
-const PORT= 8080;
+const express = require('express')
+const user_route = require('./routes/user.route')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const app = express()
+const PORT = 8080
 
+app.use(cors())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extend : true}))
-app.use("/api/v1/users", user_route );
+app.use(bodyParser.urlencoded({ extend: true }))
+app.use('/api/v1/users', user_route)
 
 // app.get("/",(_req,res)=>{
 //     res.json({
@@ -14,6 +16,6 @@ app.use("/api/v1/users", user_route );
 //     })
 // })
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`server Started at port ${PORT}`)
 })
